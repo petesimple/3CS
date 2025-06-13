@@ -63,7 +63,8 @@
 
   <div class="controls">
     <button onclick="undoLast()">Undo Last</button>
-    <button onclick="resetGame()">Reset Match</button>
+    <button onclick="resetMatchSamePlayers()">Reset Match</button>
+    <button onclick="resetGame()">Reset Game</button>
   </div>
 
   <div class="log" id="log"></div>
@@ -82,7 +83,10 @@
       activeLeft = p1;
       activeRight = p2;
       waiting = p3;
+      log = [];
+      timer = 0;
       updateUI();
+      if (timerInterval) clearInterval(timerInterval);
       timerInterval = setInterval(() => {
         timer++;
         document.getElementById('timer').textContent = formatTime(timer);
@@ -124,6 +128,12 @@
       timer--; // crude rollback, can be improved later
       // full undo logic to be implemented in later version
       updateUI();
+    }
+
+    function resetMatchSamePlayers() {
+      if (players.length === 3) {
+        startGame(players[0], players[1], players[2]);
+      }
     }
 
     function resetGame() {
