@@ -160,13 +160,25 @@
 
     function resetMatchSamePlayers() {
       if (players.length === 3) {
-        startGame(players[0], players[1], players[2]);
+        const confirm1 = confirm("Are you sure you want to reset the match?");
+        if (confirm1) {
+          const confirm2 = confirm("This will clear scores and timer. Continue?");
+          if (confirm2) {
+            startGame(players[0], players[1], players[2]);
+          }
+        }
       }
     }
 
     function resetGame() {
-      clearInterval(timerInterval);
-      location.reload();
+      const confirm1 = confirm("Are you sure you want to reset the game?");
+      if (confirm1) {
+        const confirm2 = confirm("This will erase all players and start fresh. Continue?");
+        if (confirm2) {
+          clearInterval(timerInterval);
+          location.reload();
+        }
+      }
     }
 
     // Initial prompt
