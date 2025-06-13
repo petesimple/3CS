@@ -101,6 +101,7 @@
     let players = [];
     let activeLeft, activeRight, waiting;
     let scores = {}, log = [];
+    let gameStateHistory = [];
     let timer = 0, timerInterval;
 
     function startGame(p1, p2, p3) {
@@ -112,6 +113,7 @@
       activeRight = p2;
       waiting = p3;
       log = [];
+      gameStateHistory = [];
       timer = 0;
       updateUI();
       if (timerInterval) clearInterval(timerInterval);
@@ -128,6 +130,14 @@
     }
 
     function score(side) {
+      // Save current state before scoring
+      gameStateHistory.push({
+        activeLeft,
+        activeRight,
+        waiting,
+        scores: { ...scores }
+      });
+
       const scorer = side === 'left' ? activeLeft : activeRight;
       const loser = side === 'left' ? activeRight : activeLeft;
       scores[scorer]++;
@@ -151,11 +161,15 @@
     }
 
     function undoLast() {
-      if (!log.length) return;
-      log.pop();
-      timer--; // crude rollback, can be improved later
-      // full undo logic to be implemented in later version
-      updateUI();
+      const lastState = gameStateHistory.pop();
+      if (lastState) {
+        activeLeft = lastState.activeLeft;
+        activeRight = lastState.activeRight;
+        waiting = lastState.waiting;
+        scores = { ...lastState.scores };
+        log.pop();
+        updateUI();
+      }
     }
 
     function resetMatchSamePlayers() {
