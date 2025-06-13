@@ -61,6 +61,12 @@
       font-size: 0.9em;
       border-top: 2px solid #444;
     }
+    .timeout {
+      font-size: 2em;
+      font-weight: bold;
+      color: red;
+      margin-top: 1em;
+    }
     button {
       margin: 0 5px;
       padding: 0.5em 1em;
@@ -93,8 +99,10 @@
     <button onclick="undoLast()">Undo Last</button>
     <button onclick="resetMatchSamePlayers()">Reset Match</button>
     <button onclick="resetGame()">Reset Game</button>
+    <button onclick="startTimeout()">Time Out</button>
   </div>
 
+  <div class="timeout" id="timeoutDisplay"></div>
   <div class="log" id="log"></div>
 
   <script>
@@ -103,6 +111,7 @@
     let scores = {}, log = [];
     let gameStateHistory = [];
     let timer = 0, timerInterval;
+    let timeoutInterval, timeoutTimeLeft = 0;
 
     function startGame(p1, p2, p3) {
       players = [p1, p2, p3];
@@ -130,7 +139,6 @@
     }
 
     function score(side) {
-      // Save current state before scoring
       gameStateHistory.push({
         activeLeft,
         activeRight,
@@ -143,7 +151,6 @@
       scores[scorer]++;
       log.push(`${formatTime(timer)} – ${scorer} scored on ${loser}. ${waiting} rotated in.`);
 
-      // Rotate
       const temp = waiting;
       waiting = loser;
       if (side === 'left') activeRight = temp;
@@ -195,7 +202,21 @@
       }
     }
 
-    // Initial prompt
+    function startTimeout() {
+      if (timeoutInterval) clearInterval(timeoutInterval);
+      timeoutTimeLeft = 10;
+      document.getElementById('timeoutDisplay').textContent = `TIME OUT: ${timeoutTimeLeft}`;
+      timeoutInterval = setInterval(() => {
+        timeoutTimeLeft--;
+        if (timeoutTimeLeft <= 0) {
+          clearInterval(timeoutInterval);
+          document.getElementById('timeoutDisplay').textContent = '';
+        } else {
+          document.getElementById('timeoutDisplay').textContent = `TIME OUT: ${timeoutTimeLeft}`;
+        }
+      }, 1000);
+    }
+
     window.onload = () => {
       const p1 = prompt("Enter Player 1:");
       const p2 = prompt("Enter Player 2:");
