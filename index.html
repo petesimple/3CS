@@ -25,13 +25,28 @@
     .player-box {
       flex: 1;
       padding: 1em;
-      border: 2px solid #fff;
       margin: 0 10px;
       cursor: pointer;
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.1em;
+      color: #000;
+    }
+    #leftBox {
+      background: red;
+    }
+    #rightBox {
+      background: yellow;
     }
     .waiting {
       margin-top: 1em;
       font-style: italic;
+      color: #39ff14; /* neon green */
     }
     .controls {
       margin-top: 1.5em;
@@ -45,6 +60,19 @@
       text-align: left;
       font-size: 0.9em;
       border-top: 2px solid #444;
+    }
+    button {
+      margin: 0 5px;
+      padding: 0.5em 1em;
+      font-size: 1em;
+      background-color: #444;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #666;
     }
   </style>
 </head>
