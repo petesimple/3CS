@@ -56,6 +56,10 @@
     }
     .controls {
       margin-top: 1.5em;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
     }
     .log {
       background: #000;
@@ -74,7 +78,7 @@
       margin-top: 1em;
     }
     button {
-      margin: 0 5px;
+      width: 140px;
       padding: 0.5em 1em;
       font-size: 1em;
       background-color: #444;
@@ -96,7 +100,7 @@
 </head>
 <body>
   <header>
-    <img src="3CSlogoNBG.png" alt="3Cs Logo">
+    <img src="3CSlogo.png" alt="3Cs Logo">
     <div>⏱️ <span id="timer">00:00</span></div>
   </header>
 
@@ -108,9 +112,9 @@
   <div class="waiting" id="waitingPlayer">Waiting: </div>
 
   <div class="controls">
-    <button onclick="undoLast()">Undo Last</button>
     <button onclick="resetMatchSamePlayers()">Reset Match</button>
     <button onclick="resetGame()">Reset Game</button>
+    <button onclick="undoLast()">Undo Last</button>
     <button onclick="startTimeout()">Time Out</button>
   </div>
 
