@@ -252,7 +252,6 @@
     function updateUI() {
   document.getElementById('leftLabel').textContent = `${activeLeft} (${scores[activeLeft]})`;
   document.getElementById('rightLabel').textContent = `${activeRight} (${scores[activeRight]})`;
-  document.getElementById('waitingPlayer').textContent = `Waiting: ${waiting} (${scores[waiting]})`;
   document.getElementById('waitingLabel').textContent = `${waiting} (${scores[waiting]})`;
   document.getElementById('log').innerHTML = log.map(line => `<div>${line}</div>`).join('');
 }
