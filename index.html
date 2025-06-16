@@ -114,6 +114,13 @@
   button:hover {
     background-color: #666;
   }
+    #versionTag {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 0.9em;
+  color: #888;
+  font-style: italic;
+}
 </style>
   <script>
     if ('serviceWorker' in navigator) {
@@ -147,7 +154,9 @@
     <button onclick="undoLast()">Undo Last</button>
     <button onclick="startTimeout()">Time Out</button>
   </div>
-
+  
+<p id="versionTag" style="margin-top: 10px; font-size: 0.9em; color: #888;">Version 1.0 (beta)</p>
+  
   <div class="timeout" id="timeoutDisplay"></div>
   <div class="log" id="log"></div>
 
