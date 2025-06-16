@@ -90,6 +90,35 @@
     button:hover {
       background-color: #666;
     }
+    .player-box {
+  position: relative;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: red; /* or yellow for rightBox */
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.puck-inner {
+  width: 100px;
+  height: 100px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1;
+}
+
+.player-label {
+  z-index: 2;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  position: relative;
+}
   </style>
   <script>
     if ('serviceWorker' in navigator) {
@@ -104,10 +133,16 @@
     <div>⏱️ <span id="timer">00:00</span></div>
   </header>
 
-  <div class="players">
-    <div class="player-box" id="leftBox" onclick="score('left')"></div>
-    <div class="player-box" id="rightBox" onclick="score('right')"></div>
+ <div class="players">
+  <div class="player-box" id="leftBox" onclick="score('left')">
+    <div class="puck-inner"></div>
+    <span class="player-label" id="leftLabel"></span>
   </div>
+  <div class="player-box" id="rightBox" onclick="score('right')">
+    <div class="puck-inner"></div>
+    <span class="player-label" id="rightLabel"></span>
+  </div>
+</div>
 
   <div class="waiting" id="waitingPlayer">Waiting: </div>
 
