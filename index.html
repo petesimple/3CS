@@ -8,118 +8,113 @@
   <meta name="theme-color" content="#111111" />
   <link rel="icon" href="3CSlogo.png" type="image/png">
   <style>
-    body {
-      font-family: sans-serif;
-      background: #111;
-      color: #fff;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-    }
-    header {
-      background: #222;
-      padding: 1em;
-    }
-    header img {
-      max-width: 200px;
-    }
-    .players {
-      display: flex;
-      justify-content: space-around;
-      margin-top: 1em;
-    }
-    .player-box {
-      flex: 1;
-      padding: 1em;
-      margin: 0 10px;
-      cursor: pointer;
-      border-radius: 50%;
-      width: 150px;
-      height: 150px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 1.1em;
-      color: #000;
-    }
-    #leftBox {
-      background: red;
-    }
-    #rightBox {
-      background: yellow;
-    }
-    .waiting {
-      margin-top: 1em;
-      font-style: italic;
-      color: #39ff14;
-    }
-    .controls {
-      margin-top: 1.5em;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-    }
-    .log {
-      background: #000;
-      margin-top: 1em;
-      padding: 1em;
-      max-height: 200px;
-      overflow-y: scroll;
-      text-align: left;
-      font-size: 0.9em;
-      border-top: 2px solid #444;
-    }
-    .timeout {
-      font-size: 2em;
-      font-weight: bold;
-      color: red;
-      margin-top: 1em;
-    }
-    button {
-      width: 140px;
-      padding: 0.5em 1em;
-      font-size: 1em;
-      background-color: #444;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #666;
-    }
-    .player-box {
-  position: relative;
-  border-radius: 50%;
-  width: 150px;
-  height: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: red; /* or yellow for rightBox */
-  margin: 0 10px;
-  cursor: pointer;
-}
+  body {
+    font-family: sans-serif;
+    background: #111;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
 
-.puck-inner {
-  width: 100px;
-  height: 100px;
-  background: white;
-  border-radius: 50%;
-  position: absolute;
-  z-index: 1;
-}
+  header {
+    background: #222;
+    padding: 1em;
+  }
 
-.player-label {
-  z-index: 2;
-  color: black;
-  font-weight: bold;
-  text-align: center;
-  position: relative;
-}
-  </style>
+  header img {
+    max-width: 200px;
+  }
+
+  .players {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1em;
+  }
+
+  .player-box {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 10px;
+    border-radius: 50%;
+    background: red;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #rightBox {
+    background: yellow;
+  }
+
+  .puck-inner {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: white;
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+  .player-label {
+    position: relative;
+    z-index: 2;
+    color: black;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  .waiting {
+    margin-top: 1em;
+    font-style: italic;
+    color: #39ff14;
+  }
+
+  .controls {
+    margin-top: 1.5em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .log {
+    background: #000;
+    margin-top: 1em;
+    padding: 1em;
+    max-height: 200px;
+    overflow-y: scroll;
+    text-align: left;
+    font-size: 0.9em;
+    border-top: 2px solid #444;
+  }
+
+  .timeout {
+    font-size: 2em;
+    font-weight: bold;
+    color: red;
+    margin-top: 1em;
+  }
+
+  button {
+    width: 140px;
+    padding: 0.5em 1em;
+    font-size: 1em;
+    background-color: #444;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #666;
+  }
+</style>
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('service-worker.js')
