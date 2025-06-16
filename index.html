@@ -279,9 +279,31 @@
     if (scores[player] >= 7) {
       clearInterval(timerInterval);
       const ranking = [...players].sort((a, b) => scores[b] - scores[a]);
-      alert(`🏆 Winner: ${ranking[0]} (${scores[ranking[0]]})
+
+      const winnerText = `🏆 Winner: ${ranking[0]} (${scores[ranking[0]]})
 🥈 2nd: ${ranking[1]} (${scores[ranking[1]]})
-🥉 3rd: ${ranking[2]} (${scores[ranking[2]]})`);
+🥉 3rd: ${ranking[2]} (${scores[ranking[2]]})`;
+
+      alert(winnerText);
+
+      const shareButton = document.getElementById('shareResultsBtn');
+      shareButton.style.display = 'inline-block';
+
+      shareButton.onclick = () => {
+        const shareData = {
+          title: "3CS Air Hockey Results",
+          text: `🎉 Final Results:\n${winnerText}`,
+          url: window.location.href
+        };
+
+        if (navigator.share) {
+          navigator.share(shareData).catch(err => console.warn("Share failed:", err));
+        } else {
+          // Fallback: Copy to clipboard or open Twitter
+          const tweetText = encodeURIComponent(`${shareData.text}`);
+          window.open(`https://twitter.com/intent/tweet?text=${tweetText}`, '_blank');
+        }
+      };
     }
   }
 }
