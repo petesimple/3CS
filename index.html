@@ -59,14 +59,23 @@
   }
 
   .player-label {
-    position: relative;
-    z-index: 2;
-    color: black;
-    font-weight: bold;
-    font-size: 1.1em;
-    text-align: center;
-    padding: 0 10px;
-  }
+  position: relative;
+  z-index: 2;
+  color: black;
+  font-weight: bold;
+  font-size: 1.1em;
+  text-align: center;
+  padding: 0 10px;
+  background: transparent;
+  border: none;
+  text-align: center;
+  width: 90%;
+}
+
+.player-label:focus {
+  outline: none;
+  background: rgba(255,255,255,0.2);
+}
 
   .controls {
     margin-top: 1.5em;
@@ -172,13 +181,19 @@
 
  <div class="players">
   <div class="player-box" id="leftBox" onclick="score('left')">
-    <div class="puck-inner"></div>
-    <span class="player-label" id="leftLabel"></span>
-  </div>
-  <div class="player-box" id="rightBox" onclick="score('right')">
-    <div class="puck-inner"></div>
-    <span class="player-label" id="rightLabel"></span>
-  </div>
+  <div class="puck-inner"></div>
+  <input class="player-label" id="leftLabel" placeholder="Left Player">
+</div>
+
+<div class="player-box" id="rightBox" onclick="score('right')">
+  <div class="puck-inner"></div>
+  <input class="player-label" id="rightLabel" placeholder="Right Player">
+</div>
+
+<div class="waiting-puck" id="waitingBox">
+  <div class="puck-inner tape"></div>
+  <input class="player-label" id="waitingLabel" placeholder="Up Next">
+</div>
 </div>
 
   <div class="waiting-puck" id="waitingBox">
@@ -255,9 +270,9 @@
     }
 
     function updateUI() {
-  document.getElementById('leftLabel').textContent = `${activeLeft} (${scores[activeLeft]})`;
-  document.getElementById('rightLabel').textContent = `${activeRight} (${scores[activeRight]})`;
-  document.getElementById('waitingLabel').textContent = `${waiting} (${scores[waiting]})`;
+  document.getElementById('leftLabel').value = `${activeLeft} (${scores[activeLeft]})`;
+  document.getElementById('rightLabel').value = `${activeRight} (${scores[activeRight]})`;
+  document.getElementById('waitingLabel').value = `${waiting} (${scores[waiting]})`;
   document.getElementById('log').innerHTML = log.map(line => `<div>${line}</div>`).join('');
 }
 
