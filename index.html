@@ -63,7 +63,7 @@
   z-index: 2;
   color: black;
   font-weight: bold;
-  font-size: 1.1em;
+  font-size: 1.5em;
   text-align: center;
   padding: 0 10px;
   background: transparent;
@@ -198,6 +198,7 @@
 </div>
 </div>
 
+  <button id="swapButton" onclick="swapPlayers()">Swap Players</button>
   <div class="controls">
     <button onclick="resetMatchSamePlayers()">Reset Match</button>
     <button onclick="resetGame()">Reset Game</button>
@@ -231,6 +232,7 @@
       gameStateHistory = [];
       timer = 0;
       updateUI();
+      document.getElementById('swapButton').style.display = 'inline-block';
       if (timerInterval) clearInterval(timerInterval);
       timerInterval = setInterval(() => {
         timer++;
@@ -262,6 +264,9 @@
       if (side === 'left') activeRight = temp;
       else activeLeft = temp;
 
+      // Hide the swap button after first score
+      document.getElementById('swapButton').style.display = 'none';
+      
       updateUI();
       checkWinner();
     }
@@ -367,6 +372,17 @@
     }
   }
 }
+
+    function swapPlayers() {
+  // Swap active players
+  const temp = activeLeft;
+  activeLeft = activeRight;
+  activeRight = temp;
+
+  // Update UI
+  updateUI();
+}
+    
   </script>
 </body>
 </html>
