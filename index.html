@@ -168,6 +168,31 @@
     opacity: 0.8;
     z-index: 1;
   }
+    @media (max-width: 600px) {
+  .player-box {
+    width: 160px;
+    height: 160px;
+  }
+
+  .puck-inner {
+    width: 130px;
+    height: 130px;
+  }
+
+  .waiting-puck {
+    width: 160px;
+    height: 160px;
+  }
+
+  .waiting-puck .puck-inner.tape {
+    width: 130px;
+    height: 130px;
+  }
+
+  .player-label {
+    font-size: 1.2em;
+  }
+}
 </style>
   <script>
     if ('serviceWorker' in navigator) {
