@@ -6,6 +6,7 @@ A fast-paced, rotation-based air hockey scoring system for 3 players. Built for 
 
 - 🧠 **3-player format** with automatic rotation
 - ⏱️ **Match timer**
+- 🔄 **Swap Players button** (can swap sides before first point)
 - 🟢 **Neon green “waiting” player puck**
 - 📝 **Match log** with goal history
 - 🔁 **Undo last goal**
@@ -13,15 +14,17 @@ A fast-paced, rotation-based air hockey scoring system for 3 players. Built for 
 - 📤 **Share results** via Web Share API or Twitter
 - 🔄 **Reset match** or **start fresh**
 - 🔢 **Scores & names shown inside pucks**
-- 🧪 Version 1.2 (beta)
+- 🔠 **Large, bold player names with two-line wrapping**
+- 🧪 Version 1.3 (names & swap)
 
 ## 🕹️ How It Works
 
 1. Prompted to enter **3 player names** on load
 2. First two players begin; third is in waiting
-3. Whenever someone scores, the **defender rotates out**, and the waiting player rotates in
-4. First to **7 points** wins!
-5. Final scores are displayed with podium ranks (🥇🥈🥉)
+3. **Swap Players** button can switch left/right sides before the first goal
+4. Whenever someone scores, the **defender rotates out**, and the waiting player rotates in
+5. First to **7 points** wins!
+6. Final scores are displayed with podium ranks (🥇🥈🥉)
 
 ## 📲 How to Install (PWA)
 
@@ -51,6 +54,7 @@ The app will now launch fullscreen like a native app — no browser chrome!
 - Built and tested with Chrome, Safari, and Edge
 - Ideal for use at physical air hockey tables
 - Optimized for iPad and mobile screens
+- **New in 1.3:** Swap Players button, larger names with line wrapping
 
 ## 📣 Feedback Welcome
 
